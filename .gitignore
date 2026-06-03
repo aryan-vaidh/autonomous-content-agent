@@ -1,0 +1,13 @@
+# Environments
+env/
+venv/
+.env
+
+# Python Caches
+__pycache__/
+*.pyc
+
+# Local Databases (Do not upload AI state memory)
+*.sqlite
+*.sqlite-shm
+*.sqlite-wal

@@ -1,0 +1,21 @@
+# --- API & Web Server ---
+fastapi      # The web framework that will listen for Slack webhooks
+uvicorn      # The server that actually runs the FastAPI application
+httpx        # For making asynchronous HTTP requests (sending messages to Slack)
+
+# --- AI & Orchestration ---
+langgraph        # The engine that connects our agents in a sequence (the DAG)
+langchain-openai # The official connector between LangGraph and OpenAI's API
+langchain-core   # Core classes for prompts and formatting
+langchain-google-genai # The official connector between LangGraph and Google Gemini
+
+# --- NEW: Phase 1 Additions (Search, Scraping & Memory) ---
+tavily-python               # Dedicated AI search engine to fetch the top 10-20 Google links quickly
+beautifulsoup4              # The gold standard Python library for scraping and cleaning messy HTML text
+langgraph-checkpoint-sqlite # Provides a built-in SQLite database so LangGraph can "pause" and "remember" states
+
+# --- Utilities ---
+pydantic       # Validates the data coming in and out of our API (forces strict JSON)
+python-dotenv  # Securely loads our secret API keys from a hidden .env file
+
+python-multipart # Required for FastAPI to read Slack's form data
