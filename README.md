@@ -125,3 +125,5 @@ The application will spin up a local development server at: `http://127.0.0.1:80
 ```bash
 ngrok http 8000
 ```
+
+Copy the secure HTTPS URL provided by ngrok and paste it into your Slack App Configuration dashboard under Slash Commands and Interactivity & Shortcuts (e.g., `https://your-ngrok-url.ngrok-free.app/slack/events`).
