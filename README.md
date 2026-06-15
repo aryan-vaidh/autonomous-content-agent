@@ -52,3 +52,76 @@ The system is designed as a stateful directed acyclic graph (DAG) where speciali
 ├── test_main.py                # Pipeline automation verification suite
 ├── requirements.txt            # Explicit third-party system dependencies
 └── README.md                   # System documentation
+
+# ⚙️ Local Installation & Configuration
+
+## 1. Clone & Set Up Environment
+
+```bash
+git clone <your-repository-url>
+cd BlogAgent
+
+# Create and activate a dedicated virtual environment
+python3 -m venv env
+source env/bin/activate    # On Windows use: env\Scripts\activate
+
+## 2. Install Project Dependencies
+
+```bash
+pip install --upgrade pip
+pip install -r requirements.txt
+```
+
+---
+
+## 3. Configure Local Environment Variables
+
+Create a `.env` file in the root directory of the project and populate it with your operational credentials:
+
+```env
+GEMINI_API_KEY=your_google_gemini_api_key
+SERPER_API_KEY=your_serper_dev_search_api_key
+
+SLACK_BOT_TOKEN=xoxb-your-slack-bot-token
+SLACK_SIGNING_SECRET=your_slack_signing_secret
+
+NTX_API_KEY=your_ntx_rest_api_key
+NTX_ACCOUNT_ID=your_ntx_account_id
+NTX_SITE_ID=your_ntx_site_id
+```
+
+---
+
+## 🧪 Continuous Integration & Testing
+
+This project incorporates a continuous integration pipeline via GitHub Actions to maintain code health and strict validation checks on code contributions.
+
+- Linting Engine: **flake8** scans against the repository for critical structural bugs, syntax failures, and cyclomatic complexity limits.
+
+- Testing Engine: **pytest** runs integrated unit and endpoint tests across workflow endpoints.
+
+To run tests and lint checks locally before pushing to remote branches:
+
+```bash
+# Run styling and validation lint checks
+flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
+
+# Execute the test suite
+pytest
+```
+
+---
+
+## 🚀 Execution Guide
+
+Start the FastAPI microservice engine locally:
+
+```bash
+uvicorn app.main:app --reload
+```
+
+The application will spin up a local development server at: `http://127.0.0.1:8000`. Ensure your local host path is securely tunneled (e.g., via `ngrok`) to safely intercept inbound webhook delivery events dispatched from the Slack API servers.
+
+```bash
+ngrok http 8000
+```
